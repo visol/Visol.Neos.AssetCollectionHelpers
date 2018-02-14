@@ -1,0 +1,19 @@
+{
+    "name": "visol/neos-assetcollectionhelpers",
+    "type": "neos-package",
+    "description": "Neos package that helps dealing with cache invalidation of AssetCollections used in content",
+    "license": "MIT",
+    "require": {
+        "neos/media-browser": "~3.3 || dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Visol\\Neos\\AssetCollectionHelpers\\": "Classes"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Visol.Neos.AssetCollectionHelpers"
+        }
+    }
+}

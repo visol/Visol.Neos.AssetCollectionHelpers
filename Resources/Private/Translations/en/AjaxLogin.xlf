@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+    <file original="" product-name="Visol.Neos.AjaxLogin" source-language="en" datatype="plaintext">
+        <body>
+            <trans-unit id="username" xml:space="preserve">
+    			<source>Username</source>
+            </trans-unit>
+            <trans-unit id="password" xml:space="preserve">
+    			<source>Password</source>
+            </trans-unit>
+            <trans-unit id="submit" xml:space="preserve">
+    			<source>Login</source>
+            </trans-unit>
+            <trans-unit id="invalidUsernameOrPassword" xml:space="preserve">
+    			<source>The entered username or password was wrong!</source>
+            </trans-unit>
+            <trans-unit id="loadingTextLabel" xml:space="preserve">
+    			<source>Please wait…</source>
+            </trans-unit>
+            <trans-unit id="generalErrorLabel" xml:space="preserve">
+    			<source>Login is currently unavailable</source>
+            </trans-unit>
+            <trans-unit id="logoutLabel" xml:space="preserve">
+    			<source>Logout</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

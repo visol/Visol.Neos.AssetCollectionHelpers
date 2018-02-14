@@ -1,0 +1,13 @@
+Neos:
+  Neos:
+    userInterface:
+      inspector:
+        dataTypes:
+          'Neos\Media\Domain\Model\AssetCollection':
+            typeConverter: 'Neos\Neos\TypeConverter\EntityToIdentityConverter'
+            editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+            editorOptions:
+              dataSourceIdentifier: 'visol-neos-assetcollections'
+  Fusion:
+    defaultContext:
+      'AssetCollection.Caching': 'Visol\Neos\AssetCollectionHelpers\Eel\Helper\CachingHelper'

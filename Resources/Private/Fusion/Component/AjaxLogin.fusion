@@ -1,0 +1,43 @@
+prototype(Visol.Neos.AjaxLogin:AjaxLogin) < prototype(Neos.Fusion:Component) {
+    translationSourceName = ${Configuration.setting('Visol.Neos.AjaxLogin.translationSourceName')}
+    translationPackageKey = ${Configuration.setting('Visol.Neos.AjaxLogin.translationPackageKey')}
+
+    usernameLabel = ${Translation.translate('username', 'Username', [], this.translationSourceName, this.translationPackageKey)}
+    passwordLabel = ${Translation.translate('password', 'Password', [], this.translationSourceName, this.translationPackageKey)}
+    submitLabel = ${Translation.translate('submit', 'Submit', [], this.translationSourceName, this.translationPackageKey)}
+    loadingTextLabel = ${Translation.translate('loadingTextLabel', 'Please wait…', [], this.translationSourceName, this.translationPackageKey)}
+    generalErrorLabel = ${Translation.translate('generalErrorLabel', 'Login is currently unavailable', [], this.translationSourceName, this.translationPackageKey)}
+    logoutLabel = ${Translation.translate('logout', 'Logout', [], this.translationSourceName, this.translationPackageKey)}
+
+    authenticatedAccount = ${Security.getAccount()}
+    username = ${this.authenticatedAccount ? q(this.authenticatedAccount).property('accountIdentifier') : ''}
+
+    renderer = afx`
+        <div @if.userIsNotAuthenticated={!props.authenticatedAccount} class="ajax-login-container">
+            <form action="authenticate" method="post" role="form" id="ajax-login-form" enctype="application/x-www-form-urlencoded">
+                <fieldset>
+                    <div class="form-group">
+                        <label for="visol-neos-ajaxlogin-username" class="sr-only">{props.usernameLabel}</label>
+                        <input name="__authentication[Neos][Flow][Security][Authentication][Token][UsernamePassword][username]" tabindex="1" autofocus="autofocus" class="form-control" id="visol-neos-ajaxlogin-username" type="text" placeholder={props.usernameLabel} />
+                    </div>
+                    <div class="form-group">
+                        <label for="visol-neos-ajaxlogin-password" class="sr-only">{props.passwordLabel}</label>
+                        <input name="__authentication[Neos][Flow][Security][Authentication][Token][UsernamePassword][password]" tabindex="2" class="form-control" id="visol-neos-ajaxlogin-password" type="password" placeholder={props.passwordLabel} />
+                    </div>
+                    <button type="submit" value="Login" id="ajax-login-submit" class="btn btn-primary btn-block mb-3" data-loading-text={props.loadingTextLabel} data-general-error={props.generalErrorLabel}>
+                        {props.submitLabel}
+                    </button>
+                    <div class="alert alert-danger" role="alert" id="ajax-login-error" style="display: none"></div>
+                </fieldset>
+            </form>
+        </div>
+        <div @if.userIsAuthenticated={props.authenticatedAccount} class="ajax-login-container">
+            <div class="mb-3">
+                Angemeldet als {props.username}
+            </div>
+            <a href="/logout" class="btn btn-primary btn-block mb-3">
+                {props.logoutLabel}
+            </a>
+        </div>
+	`
+}
