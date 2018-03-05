@@ -46,18 +46,17 @@ class AssetCollectionDataSource extends AbstractDataSource
      */
     public function getData(NodeInterface $node = null, array $arguments)
     {
-        $options = [];
         // Empty value
-        $options[] = ['label' => '', 'value' => '~'];
+        $options = [['label' => '-', 'value' => '']];
         $assetCollections = $this->assetCollectionRepository->findAll();
         foreach ($assetCollections as $assetCollection) {
             /** @var \Neos\Media\Domain\Model\AssetCollection $assetCollection */
             $options[] = [
                 'label' => $assetCollection->getTitle(),
-                'value' => json_encode([
+                'value' => [
                     '__identity' => $this->persistenceManager->getIdentifierByObject($assetCollection),
                     '__type' => TypeHandling::getTypeForValue($assetCollection)
-                ])
+                ]
             ];
         }
 
