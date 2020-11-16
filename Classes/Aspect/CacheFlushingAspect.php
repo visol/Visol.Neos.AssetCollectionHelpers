@@ -31,12 +31,12 @@ class CacheFlushingAspect
     /**
      * Triggers flushing the content cache when assets are set, added or removed to an AssetCollection
      *
-     * @param  \Neos\Flow\AOP\JoinPointInterface $joinPoint
+     * @param  \Neos\Flow\Aop\JoinPointInterface $joinPoint
      * @return void
      * @Flow\Before("method(public Neos\Media\Domain\Model\AssetCollection->(addAsset|removeAsset|setAssets)())")
      */
     public function flushAffectedContentCacheOnAssetCollectionManipulation(
-        \Neos\Flow\AOP\JoinPointInterface $joinPoint
+        \Neos\Flow\Aop\JoinPointInterface $joinPoint
     ) {
         /** @var AssetCollection $assetCollection */
         $assetCollection = $joinPoint->getProxy();
