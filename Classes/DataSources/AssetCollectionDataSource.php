@@ -44,7 +44,7 @@ class AssetCollectionDataSource extends AbstractDataSource
      * @param array $arguments
      * @return array
      */
-    public function getData(NodeInterface $node = null, array $arguments)
+    public function getData(NodeInterface $node = null, array $arguments = [])
     {
         // Empty value
         $options = [['label' => '-', 'value' => '']];

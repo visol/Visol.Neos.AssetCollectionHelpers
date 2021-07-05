@@ -13,11 +13,11 @@ namespace Visol\Neos\AssetCollectionHelpers\Service;
  */
 
 use Neos\Flow\Annotations as Flow;
-use Neos\Flow\Log\SystemLoggerInterface;
 use Neos\Flow\Persistence\PersistenceManagerInterface;
 use Neos\Media\Domain\Model\AssetCollection;
 use Neos\Media\Domain\Model\AssetInterface;
 use Neos\Fusion\Core\Cache\ContentCache;
+use Psr\Log\LoggerInterface;
 
 /**
  * @Flow\Scope("singleton")
@@ -31,10 +31,18 @@ class CacheFlusherService
     protected $contentCache;
 
     /**
-     * @Flow\Inject
-     * @var SystemLoggerInterface
+     * @var LoggerInterface
      */
     protected $systemLogger;
+
+    /**
+     * @param LoggerInterface $logger
+     * @return void
+     */
+    public function injectLogger(LoggerInterface $logger)
+    {
+        $this->systemLogger = $logger;
+    }
 
     /**
      * @var PersistenceManagerInterface
@@ -66,8 +74,8 @@ class CacheFlusherService
         $cacheTag = 'Neos_Media_AssetCollection_' . $assetCollectionIdentifier;
         $affectedEntries = $this->contentCache->flushByTag($cacheTag);
         if ($affectedEntries > 0) {
-            $this->systemLogger->log(sprintf('Content cache: Removed %s entries for asset collection %s',
-                $affectedEntries, $assetCollectionIdentifier), LOG_DEBUG);
+            $this->systemLogger->debug(sprintf('Content cache: Removed %s entries for asset collection %s',
+                $affectedEntries, $assetCollectionIdentifier));
         }
     }
 
