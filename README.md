@@ -13,6 +13,16 @@ Therefore, if you e.g. upload a new Asset to an existing AssetCollection, your f
 
 This package provides you with the necessary implementations to work around these problems.
 
+## Compatibility and Maintenance
+
+This package is currently being maintained for the following versions:
+
+| Neos Version        | Version | Maintained |
+|----------------------------|----------------------------------|------------|
+| Neos 3.x         | 1.0  | No |
+| Neos 4.x         | 2.x | Yes |
+| Neos 5.x and above | 3.x  | Yes    |
+
 ### Example NodeType configuration
 
 Use AssetCollection as in a `SelectBoxEditor`:
