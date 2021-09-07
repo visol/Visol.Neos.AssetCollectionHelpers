@@ -57,6 +57,9 @@ class CacheFlusherService
      */
     public function flushAssetCollectionCacheForAsset(AssetInterface $asset)
     {
+        if (!$asset->getAssetCollections()) {
+            return;
+        }
         foreach ($asset->getAssetCollections() as $assetCollection) {
             /** @var AssetCollection $assetCollection */
             $this->flushCacheEntriesForAssetCollection($assetCollection);
