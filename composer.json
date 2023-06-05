@@ -4,7 +4,7 @@
     "description": "Neos package that helps dealing with cache invalidation of AssetCollections used in content",
     "license": "MIT",
     "require": {
-        "neos/media-browser": "~5.0 || dev-master"
+        "neos/media-browser": "~5.0 || ~6.0 || ~7.0 || ~8.0 || dev-master"
     },
     "autoload": {
         "psr-4": {
